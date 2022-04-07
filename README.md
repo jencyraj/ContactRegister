@@ -2,7 +2,7 @@
 ## Technology Used:
 * Asp.net MVC Core with Entity Framework
 * Sql server 2008 R2
-* Advanced Javascript  and Jquey
+* Advanced Javascript  and Jquery
 * css, with boostrap
 ## Packages
 * microsoft.aspnetcore.mvc.razor.runtimecompilation\5.0.13\
