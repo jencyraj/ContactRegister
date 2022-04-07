@@ -1,0 +1,99 @@
+﻿@model WebContactRegister.Models.Company
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<hr />
+
+<div class="col-11 mx-auto pt-0">
+    <div class="card">
+        <div class="card-header bg-primary text-uppercase text-white">
+            <h4>View Company Details</h4>
+        </div>
+        <form ID="RegFormID" enctype="multipart/form-data" asp-action="Create">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="CompanyName" class="form-control-label font-weight-bold"></label>
+                        <input asp-for="CompanyName" class="form-control-plaintext" readonly />
+
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="CompanyAddress" class="form-control-label font-weight-bold"></label>
+                        <input asp-for="CompanyAddress" class="form-control-plaintext" readonly />
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <table id="ComTable" class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Address
+                                </th>
+                                <th>
+                                    PhoneNumber
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @for (int i = 0; i < Model.Persons.Count; i++)
+                            {
+                                <tr>
+                                    <td>
+                                        <input asp-for="@Model.Persons[i].Name" class="form-control-plaintext" readonly />
+
+                                    </td>
+                                    <td>
+                                        <input asp-for="@Model.Persons[i].Address" class="form-control-plaintext" readonly />
+                                    </td>
+                                    <td>
+                                        <input asp-for="@Model.Persons[i].PhoneNumber" class="form-control-plaintext" readonly />
+
+
+                                    </td>
+                                    <td>
+                                        <button id='btndummy-@i' type="button" class="btn btn-sm invisible">Dummy</button>
+
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-12 btn-group">
+                    <div class="form-group">
+                        <input type="button" class="invisible" />
+                        <a asp-action="Index" class="btn btn-secondary">Back</a>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}

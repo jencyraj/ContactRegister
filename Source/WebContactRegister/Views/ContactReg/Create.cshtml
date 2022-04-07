@@ -1,0 +1,108 @@
+﻿@model WebContactRegister.Models.Company
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="col-11 mx-auto pt-0">
+    <div class="card">
+        <div class="card-header bg-primary text-uppercase text-white">
+            <h4>Create Company and Contact Persons</h4>
+        </div>
+        <form ID="RegFormID" enctype="multipart/form-data" asp-action="Create">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="CompanyName" class="control-label"></label>
+                        <input asp-for="CompanyName" class="form-control" />
+                        <span asp-validation-for="CompanyName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="CompanyAddress" class="control-label"></label>
+                        <input asp-for="CompanyAddress" class="form-control" />
+                        <span asp-validation-for="CompanyAddress" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="container col-12">
+                    <div class="col-md-12 p-0 m-0 bg-light">
+                        <table id="ComTable" class="table  table-sm RegTable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Address
+                                    </th>
+                                    <th>
+                                        PhoneNumber
+                                    </th>
+                                    <th style="width:75px;">
+                                        <button id="btnaddPerson" type="button" class="btn btn-sm btn-secondary visible "
+                                                onclick="AddItem(this)">
+                                            Add
+                                        </button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @for (int i = 0; i < Model.Persons.Count; i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            <input asp-for="@Model.Persons[i].Name" class="form-control" />
+                                            <span asp-validation-for="@Model.Persons[i].Name" class="text-danger"></span>
+                                        </td>
+                                        <td>
+                                            <input asp-for="@Model.Persons[i].Address" class="form-control" />
+                                        </td>
+                                        <td>
+                                            <input asp-for="@Model.Persons[i].PhoneNumber" class="form-control" />
+                                            <span asp-validation-for="@Model.Persons[i].PhoneNumber" class="text-danger"></span>
+
+
+                                        </td>
+                                        <td style="width:60px;">
+
+                                            <button id="btnremove-@i" type="button" class="btnDelete btn btn-sm btn-danger visible "
+                                                    onclick="DeleteItem(this)">
+                                                Delete
+                                            </button>
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <input type="hidden" id="hdnLastIndex" value="0" />
+                <div class="col-12 btn-group">
+                    <div class="form-group">
+                        <input type="button" class="invisible" />
+                        <a asp-action="Index" class="btn btn-secondary">Back</a>
+
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}
