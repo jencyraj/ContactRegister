@@ -12,7 +12,7 @@ function DeleteItem(btn) {
     var table = document.getElementById('ComTable');
     var rows = table.getElementsByTagName('tr');
     if (rows.length == 2) {
-        alert("This Row Cannot Be Deleted");
+        alert("This Row Cannot Be Deleted!! The company should need at least one contact Person");
         return;
     }
 
