@@ -15,6 +15,12 @@
 * PM> *add-migration "create-Db"*   //create Database
 * PM> *update-database*
 * Once Build succeed,Go and varify into your sql server. ( see the database and tables)
+* Add connectionString into your Project (*appsettings.js*)
+## Database Details
+* Database Name : *DB_ContactRegister*
+* Table : *Companies*, *People*
+* Companies : {CompanyID(PK), CompanyName, CompanyAddress}
+* People : {PID ,CID(FK), Name,Address,PhoneNUmber} 
 ## extra css and js file
 * ~\wwwroot\js\site.js
 * ~\WebContactRegister\wwwroot\css\site.css [line num 73-96]
